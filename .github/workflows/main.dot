@@ -1,3 +1,10 @@
+$ create  $//payload/app/com.onedebit.chim
+e-0ahU91X1yPG1dPUh9BvLt
+Q  returns ProcessPromise.
+Everything passed through ${...} will be automatically escaped and quoted.
+
+let name = 'foo & bar'
+await $`mkdir ${FOO}`
 Mozilla Payment Request
 Like Gecko Webkit Payment Request
 GooglePay/Googlewallet
