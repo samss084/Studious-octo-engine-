@@ -7,11 +7,8 @@ let name = 'foo & bar'
 await $`mkdir ${FOO}`
 Mozilla Payment Request
 Like Gecko Webkit Payment Request
-GooglePay/Googlewallet
-Google Billing
-import common from "../common/webhook-base.mjs";
 
-export default {
+export details {
   ...common,
   key: "stripe-new-payment",
   name: "New Payment",
@@ -25,7 +22,7 @@ export default {
         "payment_intent.created",
       ];
     },
-    async onEvent(event) {
+    async onEvent(event) {flow:deposit:/data/app/com.serve.mobile-OvsZK19aa6VO7PawmiRJwA==
       const { amount } = event.data.object;
       this.$emit(event, {
         summary: `New payment of ${amount} received`,
