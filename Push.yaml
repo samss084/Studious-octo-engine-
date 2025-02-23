@@ -1,3 +1,25 @@
+const stripe = require('stripe')('your_stripe_secret_key');
+
+async function pushTreasuryPayment(amount, currency, destination) {
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount,
+      currency,
+      payment_method_types: ['us_bank_account'],
+      description: 'Treasury payment to the same account',
+      transfer_data: {
+        destination,
+      },
+    });
+
+    console.log('Payment Intent created:', paymentIntent);
+  } catch (error) {
+    console.error('Error creating payment intent:', error);
+  }
+}
+
+// Example usage
+pushTreasuryPayment(100000, 'usd', 'destination_account_id'); // Adjust with the appropriate amount and account ID
 Payment Request 
 https://secure.serve.com/accounts/d61701a960e74f71a08feb0a688ba996
 Location:/data/app/com.serve.mobile-OvsZK19aa6VO7PawmiRJwA==
