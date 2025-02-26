@@ -1,5 +1,5 @@
-Run:
-Push:
+Run:studios.<link> in main
+Push:studios.<link> in main
 const JSON = require('JSON');
 const sendHttpRequest = require('sendHttpRequest');
 const encodeUriComponent = require('encodeUriComponent');
