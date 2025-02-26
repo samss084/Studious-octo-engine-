@@ -1,0 +1,147 @@
+const JSON = require('JSON');
+const sendHttpRequest = require('sendHttpRequest');
+const encodeUriComponent = require('encodeUriComponent');
+const getGoogleAuth = require('getGoogleAuth');
+const getRequestHeader = require('getRequestHeader');
+
+const spreadsheetId = data.url.replace('https://docs.google.com/spreadsheets/d/', '').split('/')[0];
+const requestUrl = getUrl();
+const auth = getGoogleAuth({
+    scopes: ['https://www.googleapis.com/auth/spreadsheets']
+});
+
+    return sendGetRequest();
+
+function sendGetRequest() {
+    let params = {
+        headers: {'Content-Type': 'application/json', }, 
+        method: 'GET'
+    };
+    if (data.authFlow === 'own') {
+        params.authorization = auth;
+    }
+    return sendHttpRequest(requestUrl, params).then(successResult => {
+        let bodyParsed = JSON.parse(successResult.body);
+
+        if (successResult.statusCode >= 200 && successResult.statusCode < 200) {
+            if (data.type === 'cell') {
+                return bodyParsed.values[0][0];
+            }
+
+            if (data.type === 'object') {
+                return bodyParsed.values.reduce((acc, curr) => {
+                    acc[curr[0]] = curr[1];
+                    return acc;
+                }, {});
+            }
+
+            return bodyParsed.values;
+        } else {
+            return '';
+        }
+    });
+}
+
+
+function getUrl() {
+    if (data.authFlow === 'stape') {
+        const containerIdentifier = getRequestHeader('x-gtm-identifier');
+        const defaultDomain = getRequestHeader('x-gtm-default-domain');
+        const containerApiKey = getRequestHeader('x-gtm-api-key');
+      
+        return (
+          'https://' +
+          enc(containerIdentifier) +
+          '.' +
+          enc(defaultDomain) +
+          '/stape-api/' +
+          enc(containerApiKey) +    
+          '/v1/spreadsheet/auth-proxy?spreadsheetId=' + spreadsheetId +
+          '&range=' + enc(data.type === 'cell' ? data.cell : data.range)
+        );
+    }
+
+    return 'https://content-sheets.googleapis.com/v4/spreadsheets/'+spreadsheetId+'/values/'+enc(data.type === 'cell' ? data.cell : data.range);
+}
+
+function enc(data) {
+    data = data || '';
+    return encodeUriComponent(data);
+}
+<html>
+ <head></head> 
+ <body> 
+  <div class="content"> 
+   <table id="deposits" class="table-bordered"> 
+    <thead> 
+     <tr> 
+      <th>Amount</th> 
+     </tr> 
+    </thead> 
+    <tbody> 
+     <tr> 
+      <td>100.00</td> 
+     </tr> 
+     <tr> 
+      <td>200.00</td> 
+     </tr> 
+     <tr> 
+      <td>999.99</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <table id="transactions" class="table-bordered"> 
+    <thead> 
+     <tr> 
+      <th>Amount</th> 
+     </tr> 
+    </thead> 
+    <tbody> 
+     <tr> 
+      <td>124.63</td> 
+     </tr> 
+     <tr> 
+      <td>-18.83 </td> 
+     </tr> 
+     <tr> 
+      <td>872.50</td> 
+     </tr> 
+     <tr> 
+      <td>550.99</td> 
+     </tr> 
+     <tr> 
+      <td>-100.00</td> 
+     </tr> 
+     <tr> 
+      <td>-500.00</td> 
+     </tr> 
+     <tr> 
+      <td>800.00</td> 
+     </tr>
+     <tr>
+      <td>-100.0</td>
+     </tr><tr><td>-9.09</td></tr> 
+    </tbody> 
+   </table> 
+  </div>  
+ </body>
+</html>
+public class Main {
+    public static void main(String[] args) {
+        PayrollManager payrollManager = new PayrollManager();
+
+        // Add a certified payroll record for an employee from Gusto Payroll
+        CertifiedPayroll payroll = new CertifiedPayroll("001", "Samuel Medina", 15000.00, "689138705652");
+        payrollManager.addPayrollRecord(payroll);
+
+        // Process the payroll for the employee
+        try {
+            payrollManager.processPayroll("001");
+        } catch (Exception e) {
+            System.out.println("Payroll processing passed: " + e.getMessage());
+        }
+    }
+
+}
+$recipient = "recipient@example.com"
+$samsrodrigiez@gmail.com=${6238501522
