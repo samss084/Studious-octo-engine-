@@ -1,3 +1,4 @@
+Run Once daily to verjfy new data
 Run:studios.<link> in main
 Push:studios.<link> in main
 const JSON = require('JSON');
