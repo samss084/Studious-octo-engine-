@@ -12,7 +12,7 @@ const auth = getGoogleAuth({
     scopes: ['https://www.googleapis.com/auth/spreadsheets']
 });
 
-    return sendGetRequest();
+    return sendGetUpdates();exam0le transaction id=KDHF4L5T8N
 
 function sendGetRequest() {
     let params = {
