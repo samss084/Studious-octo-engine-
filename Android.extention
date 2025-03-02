@@ -1,0 +1,73 @@
+RUN Build Gradle Project level
+ buildscript {
+    repositories {
+        // Check that you have the following line (if not, add it):
+        google()  // Google's Maven repository
+        mavenCentral() // Include to import Plaid Link Android SDK
+    }
+    dependencies {
+        // ...
+    }
+}
+Build Gradle App level
+android {
+  defaultConfig {
+    minSdkVersion 21 // or greater
+  }
+}
+
+dependencies {
+  // ...
+  implementation 'com.plaid.link:sdk-core:<insert latest version>'
+}
+String clientUserId = "user-id";
+
+LinkTokenCreateRequestUser user = new LinkTokenCreateRequestUser()
+  .clientUserId(clientUserId)
+  .legalName("legal name")
+  .phoneNumber("4155558888")
+  .emailAddress("email@address.com");
+
+LinkTokenCreateRequest request = new LinkTokenCreateRequest()
+  .user(user)
+  .clientName("Plaid Test App")
+  .products(Arrays.asList(Products.AUTH))
+  .countryCodes(Arrays.asList(CountryCode.US))
+  .language("en")
+  .webhook("https://example.com/webhook")
+  .linkCustomizationName("default")
+  .androidPackageName("com.plaid.example")
+
+Response<LinkTokenCreateResponse> response = client()
+  .linkTokenCreate(request)
+  .execute();
+
+String linkToken = response.body().getLinkToken();
+
+LinkTokenConfiguration linkTokenConfiguration = new LinkTokenConfiguration.Builder()
+    .token("LINK_TOKEN_FROM_SERVER")
+    .build();
+
+    private ActivityResultLauncher<PlaidHandler> linkAccountToPlaid = registerForActivityResult(new FastOpenPlaidLink(),
+  result -> {
+    if (result instanceof LinkSuccess) {
+      /* handle LinkSuccess */
+    } else {
+      /* handle LinkExit */
+    }
+  }
+);
+plaidHandler = Plaid.create(this.getApplication(), linkTokenConfiguration);
+linkAccountToPlaid.launch(plaidHandler);
+LinkSuccess success = (LinkSuccess) result;
+
+String publicToken = success.getPublicToken();
+LinkSuccess.LinkSuccessMetadata metadata = success.getMetadata();
+for (LinkAccount account : success.getAccounts()) {
+  String accountId = account.getId();
+  String accountName = account.getName();
+  String accountMask = account.getMask();
+  LinkAccountSubtype accountSubtype = account.getSubtype();
+}
+String institutionId = metadata.getInstitution().getId();
+String institutionName = metadata.getInstitution().getName();
