@@ -1,7 +1,73 @@
-# Vanilla JavaScript App
+RUN Build Gradle Project level
+ buildscript {
+    repositories {
+        // Check that you have the following line (if not, add it):
+        google()  // Google's Maven repository
+        mavenCentral() // Include to import Plaid Link Android SDK
+    }
+    dependencies {
+        // ...
+    }
+}
+Build Gradle App level
+android {
+  defaultConfig {
+    minSdkVersion 21 // or greater
+  }
+}
 
-[Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/overview) allows you to easily build JavaScript apps in minutes. Use this repo with the [quickstart](https://docs.microsoft.com/azure/static-web-apps/getting-started?tabs=vanilla-javascript) to build and customize a new static site.
+dependencies {
+  // ...
+  implementation 'com.plaid.link:sdk-core:<insert latest version>'
+}
+String clientUserId = "user-id";
 
-This repo is used as a starter for a _very basic_ HTML web application using no front-end frameworks.
+LinkTokenCreateRequestUser user = new LinkTokenCreateRequestUser()
+  .clientUserId(clientUserId)
+  .legalName("legal name")
+  .phoneNumber("4155558888")
+  .emailAddress("email@address.com");
 
-This repo has a dev container. This means if you open it inside a [GitHub Codespace](https://github.com/features/codespaces), or using [VS Code with the remote containers extension](https://code.visualstudio.com/docs/remote/containers), it will be opened inside a container with all the dependencies already installed.
+LinkTokenCreateRequest request = new LinkTokenCreateRequest()
+  .user(user)
+  .clientName("Plaid Test App")
+  .products(Arrays.asList(Products.AUTH))
+  .countryCodes(Arrays.asList(CountryCode.US))
+  .language("en")
+  .webhook("https://example.com/webhook")
+  .linkCustomizationName("default")
+  .androidPackageName("com.plaid.example")
+
+Response<LinkTokenCreateResponse> response = client()
+  .linkTokenCreate(request)
+  .execute();
+
+String linkToken = response.body().getLinkToken();
+
+LinkTokenConfiguration linkTokenConfiguration = new LinkTokenConfiguration.Builder()
+    .token("LINK_TOKEN_FROM_SERVER")
+    .build();
+
+    private ActivityResultLauncher<PlaidHandler> linkAccountToPlaid = registerForActivityResult(new FastOpenPlaidLink(),
+  result -> {
+    if (result instanceof LinkSuccess) {
+      /* handle LinkSuccess */
+    } else {
+      /* handle LinkExit */
+    }
+  }
+);
+plaidHandler = Plaid.create(this.getApplication(), linkTokenConfiguration);
+linkAccountToPlaid.launch(plaidHandler);
+LinkSuccess success = (LinkSuccess) result;
+
+String publicToken = success.getPublicToken();
+LinkSuccess.LinkSuccessMetadata metadata = success.getMetadata();
+for (LinkAccount account : success.getAccounts()) {
+  String accountId = account.getId();
+  String accountName = account.getName();
+  String accountMask = account.getMask();
+  LinkAccountSubtype accountSubtype = account.getSubtype();
+}
+String institutionId = metadata.getInstitution().getId();
+String institutionName = metadata.getInstitution().getName();
