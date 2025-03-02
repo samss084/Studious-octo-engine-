@@ -1,0 +1,23 @@
+ curl --request POST \
+	--url https://sandbox.plaid.com/link/token/create \
+	--header 'Accept: application/json' \
+	--header 'Content-Type: application/json' \
+	--header 'PLAID-CLIENT-ID: env.sandbox_client_id' \
+	--header 'PLAID-SECRET: env.sandbox_secret' \
+	--data '
+{
+	"client_name": "Gopher Brokerage",
+	"language": "en",
+	"country_codes": [
+		"US"
+	],
+	"user": {
+		"client_user_id": "user_abcd"
+	},
+	"link_customization_name": "template_cpf33gm125t9",
+	"products": [
+		"layer",
+		"auth"
+	]
+}
+'
