@@ -1,0 +1,187 @@
+ [root@xxx]# ./bin/ecapture-ctyun tls -d
+2025-02-24T14:01:11+08:00 INF AppName="eCapture(旁观者)"
+2025-02-24T14:08:00 INF HomePage=https://ecapture.cc
+2025-02-24T14:01:11+08:00 INF Repository=https://github.com/gojue/ecapture
+2025-02-24T14:01:11+08:00 INF Author="CFC4N <cfc4ncs@gmail.com>"
+2025-02-24T14:01:11+08:00 INF Description="Capturing SSL/TLS plaintext without a CA certificate using eBPF. Supported on Linux/Android kernels for amd64/arm64."
+2025-02-24T14:01:11+08:00 INF Version=linux_amd64:v0.9.3-20250210-dcfc3cf:x86_64
+2025-02-24T14:01:11+08:00 INF Listen=localhost:28256
+2025-02-24T14:01:11+08:00 INF eCapture running logs logger=
+2025-02-24T14:01:11+08:00 INF the file handler that receives the captured event eventCollector=
+2025-02-24T14:01:11+08:00 INF listen=localhost:28256
+2025-02-24T14:01:11+08:00 INF https server starting...You can upgrade the configuration file via the HTTP interface.
+2025-02-24T14:01:11+08:00 WRN Kernel version is less than 5.2, Process filtering parameters do not take effect such as pid/uid. kernel=4.19.90
+2025-02-24T14:01:11+08:00 INF Kernel Info=4.19.90 Pid=1756883
+2025-02-24T14:01:11+08:00 INF BTF bytecode mode: non-CORE. btfMode=0
+2025-02-24T14:01:11+08:00 INF master key keylogger has been set. eBPFProgramType=Text keylogger=
+2025-02-24T14:01:11+08:00 INF module initialization. isReload=false moduleName=EBPFProbeOPENSSL
+2025-02-24T14:01:11+08:00 INF Module.Run()
+2025-02-24T14:01:11+08:00 INF origin versionKey="openssl 1.1.1f" versionKeyLower="openssl 1.1.1f"
+2025-02-24T14:01:11+08:00 INF OpenSSL/BoringSSL version found Android=false library version="openssl 1.1.1f"
+2025-02-24T14:01:11+08:00 INF Hook masterKey function ElfType=2 Functions=["SSL_get_wbio","SSL_in_before","SSL_do_handshake"] binrayPath=/lib64/libssl.so.1.1
+2025-02-24T14:01:11+08:00 WRN Your kernel version is less than 5.2, GlobalVar is disabled, the following parameters will be ignored:[target_pid, target_uid, target_port]
+2025-02-24T14:01:11+08:00 INF setupManagers eBPFProgramType=Text
+2025-02-24T14:01:11+08:00 INF BPF bytecode file is matched. bpfFileName=user/bytecode/openssl_1_1_1d_kern_noncore_less52.o
+2025-02-24T14:01:11+08:00 DBG upgrade check failed: local version is ahead of latest version
+2025-02-24T14:01:12+08:00 INF perfEventReader created mapSize(MB)=4
+2025-02-24T14:01:12+08:00 INF perfEventReader created mapSize(MB)=4
+2025-02-24T14:01:12+08:00 INF module started successfully. isReload=false moduleName=EBPFProbeOPENSSL
+2025-02-24T14:01:15+08:00 DBG GetConn fd=36 pid=680600
+2025-02-24T14:01:15+08:00 DBG SSLDataEvent bio_type=1285 fd=36 pid=680600 tuple=[TUPLE_NOT_FOUND]
+2025-02-24T14:01:27+08:00 DBG AddConn success fd=5 pid=680600 tuple=192.168.20.38:50458-192.168.10.41:4443
+2025-02-24T14:01:27+08:00 DBG AddConn success fd=5 pid=680600 tuple=192.168.20.38:24559-192.168.10.41:4443
+2025-02-24T14:01:27+08:00 DBG AddConn success fd=5 pid=680597 tuple=192.168.20.38:50460-192.168.10.41:4443
+2025-02-24T14:01:28+08:00 DBG DestroyConn success fd=5 pid=680600 tuple=192.168.20.38:24559-192.168.10.41:4443
+2025-02-24T14:01:28+08:00 DBG DestroyConn success fd=5 pid=680597 tuple=192.168.20.38:50460-192.168.10.41:4443
+2025-02-24T14:01:29+08:00 DBG AddConn success fd=5 pid=680600 tuple=192.168.20.38:50480-192.168.10.41:4443
+2025-02-24T14:01:29+08:00 DBG AddConn success fd=5 pid=680600 tuple=192.168.20.38:24577-192.168.10.41:4443
+2025-02-24T14:01:29+08:00 DBG AddConn success fd=36 pid=680600 tuple=192.168.20.38:50482-192.168.10.41:4443
+2025-02-24T14:01:29+08:00 DBG AddConn success fd=5 pid=680600 tuple=192.168.20.38:24579-192.168.10.41:4443
+2025-02-24T14:01:29+08:00 DBG GetConn fd=5 pid=680600
+2025-02-24T14:01:29+08:00 DBG SSLDataEvent bio_type=1285 fd=5 pid=680600 tuple=192.168.20.38:24579-192.168.10.41:4443
+2025-02-24T14:01:29+08:00 DBG GetConn fd=5 pid=680600
+2025-02-24T14:01:29+08:00 DBG SSLDataEvent bio_type=1285 fd=5 pid=680600 tuple=192.168.20.38:24579-192.168.10.41:4443
+2025-02-24T14:01:29+08:00 DBG GetConn fd=5 pid=680600
+2025-02-24T14:01:29+08:00 DBG SSLDataEvent bio_type=1285 fd=5 pid=680600 tuple=192.168.20.38:24579-192.168.10.41:4443
+2025-02-24T14:01:29+08:00 DBG GetConn fd=5 pid=680600
+2025-02-24T14:01:29+08:00 DBG SSLDataEvent bio_type=1285 fd=5 pid=680600 tuple=192.168.20.38:24579-192.168.10.41:4443
+2025-02-24T14:01:29+08:00 DBG GetConn fd=5 pid=680600
+2025-02-24T14:01:29+08:00 DBG SSLDataEvent bio_type=1285 fd=5 pid=680600 tuple=192.168.20.38:24579-192.168.10.41:4443
+2025-02-24T14:01:30+08:00 DBG GetConn fd=5 pid=680600
+2025-02-24T14:01:30+08:00 DBG SSLDataEvent bio_type=1285 fd=5 pid=680600 tuple=192.168.20.38:24579-192.168.10.41:4443
+2025-02-24T14:01:30+08:00 DBG GetConn fd=5 pid=680600
+2025-02-24T14:01:30+08:00 DBG SSLDataEvent bio_type=1285 fd=5 pid=680600 tuple=192.168.20.38:24579-192.168.10.41:4443
+2025-02-24T14:01:30+08:00 DBG DestroyConn success fd=5 pid=680600 tuple=192.168.20.38:24579-192.168.10.41:4443
+2025-02-24T14:01:30+08:00 DBG DestroyConn success fd=5 pid=680600 tuple=
+2025-02-24T14:01:30+08:00 DBG DestroyConn success fd=5 pid=680600 tuple=
+2025/02/24 14:01:31 [http2 request] Dump HTTP2 Frame error: connection error: COMPRESSION_ERROR
+2025-02-24T14:01:31+08:00 ??? nginx_5_0_192.168.20.38:24579-192.168.10.41:4443, Name:HTTP2Request, Type:2, Length:1264
+
+Frame Type      =>      SETTINGS
+Frame StreamID  =>      0
+
+Frame Type      =>      WINDOW_UPDATE
+Frame StreamID  =>      0
+
+Frame Type      =>      HEADERS
+Frame StreamID  =>      1
+header field ":method" = "GET"
+header field ":authority" = "192.168.10.41:4443"
+header field ":scheme" = "https"
+header field ":path" = "/"
+header field "cache-control" = "max-age=0"
+header field "sec-ch-ua" = "\"Not(A:Brand\";v=\"99\", \"Microsoft Edge\";v=\"133\", \"Chromium\";v=\"133\""
+header field "sec-ch-ua-mobile" = "?0"
+header field "sec-ch-ua-platform" = "\"Windows\""
+header field "upgrade-insecure-requests" = "1"
+header field "user-agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 Edg/133.0.0.0"
+header field "accept" = "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
+header field "sec-fetch-site" = "none"
+header field "sec-fetch-mode" = "navigate"
+header field "sec-fetch-user" = "?1"
+header field "sec-fetch-dest" = "document"
+header field "accept-encoding" = "gzip, deflate, br, zstd"
+header field "accept-language" = "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6"
+header field "priority" = "u=0, i"
+
+Frame Type      =>      SETTINGS
+Frame StreamID  =>      0
+
+2025-02-24T14:01:31+08:00 ??? nginx_5_1_192.168.20.38:24579-192.168.10.41:4443, Name:HTTP2Response, Type:4, Length:4275
+
+Frame Type      =>      SETTINGS
+Frame StreamID  =>      0
+
+Frame Type      =>      WINDOW_UPDATE
+Frame StreamID  =>      0
+
+Frame Type      =>      SETTINGS
+Frame StreamID  =>      0
+
+Frame Type      =>      HEADERS
+Frame StreamID  =>      1
+header field ":status" = "200"
+header field "server" = "nginx/1.21.5"
+header field "date" = "Mon, 24 Feb 2025 06:01:29 GMT"
+header field "content-type" = "text/html"
+
+Frame Type      =>      HEADERS
+Frame StreamID  =>      3
+header field ":status" = "200"
+header field "server" = "nginx/1.21.5"
+header field "date" = "Mon, 24 Feb 2025 06:01:30 GMT"
+header field "content-type" = "text/html"
+
+Frame Type      =>      DATA
+Frame StreamID  =>      3
+<html>
+<head><title>Index of /</title></head>
+<body>
+<h1>Index of /</h1><hr><pre><a href="../">../</a>
+<a href="bak/">bak/</a>                                               18-Dec-2024 09:59       -
+<a href="http2_test/">http2_test/</a>                                        17-Feb-2025 15:10       -
+<a href="iso/">iso/</a>                                               22-Jan-2025 15:22       -
+<a href="small/">small/</a>                                             19-Dec-2024 15:35       -
+<a href="temp/">temp/</a>                                              18-Dec-2024 10:25       -
+<a href="test_time_delay/">test_time_delay/</a>                                   20-Dec-2024 10:48       -
+<a href="1.txt">1.txt</a>                                              23-Dec-2024 10:20      12
+<a href="config.txt">config.txt</a>                                         23-Dec-2024 09:19     87K
+<a href="test.txt">test.txt</a>                                           24-Jan-2025 14:31      3M
+</pre><hr></body>
+</html>
+<html>
+<head><title>Index of /</title></head>
+<body>
+<h1>Index of /</h1><hr><pre><a href="../">../</a>
+<a href="bak/">bak/</a>                                               18-Dec-2024 09:59       -
+<a href="http2_test/">http2_test/</a>                                        17-Feb-2025 15:10       -
+<a href="iso/">iso/</a>                                               22-Jan-2025 15:22       -
+<a href="small/">small/</a>                                             19-Dec-2024 15:35       -
+<a href="temp/">temp/</a>                                              18-Dec-2024 10:25       -
+<a href="test_time_delay/">test_time_delay/</a>                                   20-Dec-2024 10:48       -
+<a href="1.txt">1.txt</a>                                              23-Dec-2024 10:20      12
+<a href="config.txt">config.txt</a>                                         23-Dec-2024 09:19     87K
+<a href="dez.sh">dez.sh</a>                                             18-Dec-2024 10:03    4473
+<a href="test.txt">test.txt</a>                                           24-Jan-2025 14:31      3M
+</pre><hr></body>
+</html>
+
+2025-02-24T14:01:38+08:00 DBG GetConn fd=5 pid=680600
+2025-02-24T14:01:38+08:00 DBG SSLDataEvent bio_type=1285 fd=5 pid=680600 tuple=[TUPLE_NOT_FOUND]
+2025-02-24T14:01:38+08:00 DBG GetConn fd=5 pid=680600
+2025-02-24T14:01:38+08:00 DBG SSLDataEvent bio_type=1285 fd=5 pid=680600 tuple=[TUPLE_NOT_FOUND]
+2025-02-24T14:01:38+08:00 DBG GetConn fd=5 pid=680600
+2025-02-24T14:01:38+08:00 DBG SSLDataEvent bio_type=1285 fd=5 pid=680600 tuple=[TUPLE_NOT_FOUND]
+2025/02/24 14:01:40 [http2 response] Dump HTTP2 Frame error: connection error: COMPRESSION_ERROR
+2025-02-24T14:01:40+08:00 ??? nginx_5_1_0.0.0.0:0-0.0.0.0:0, Name:HTTP2Response, Type:4, Length:2089
+
+Frame Type      =>      HEADERS
+Frame StreamID  =>      5
+header field ":status" = "200"
+header field "server" = "nginx/1.21.5"
+header field "date" = "Mon, 24 Feb 2025 06:01:38 GMT"
+header field "content-type" = "text/html"
+
+Frame Type      =>      DATA
+Frame StreamID  =>      5
+<html>
+<head><title>Index of /</title></head>
+<body>
+<h1>Index of /</h1><hr><pre><a href="../">../</a>
+<a href="bak/">bak/</a>                                               18-Dec-2024 09:59       -
+<a href="http2_test/">http2_test/</a>                                        17-Feb-2025 15:10       -
+<a href="iso/">iso/</a>                                               22-Jan-2025 15:22       -
+<a href="small/">small/</a>                                             19-Dec-2024 15:35       -
+<a href="temp/">temp/</a>                                              18-Dec-2024 10:25       -
+<a href="test_time_delay/">test_time_delay/</a>                                   20-Dec-2024 10:48       -
+<a href="1.txt">1.txt</a>                                              23-Dec-2024 10:20      12
+<a href="config.txt">config.txt</a>                                         23-Dec-2024 09:19     87K
+<a href="dez.sh">dez.sh</a>                                             18-Dec-2024 10:03    4473
+<a href="test.txt">test.txt</a>                                           24-Jan-2025 14:31      3M
+</pre><hr></body>
+</html>
+
+^C2025-02-24T14:03:33+08:00 INF Module continue,message recived from Context
+2025-02-24T14:03:33+08:00 INF module open.
+2025-02-24T14:03:33+08:00 INF iModule module open
+2025-02-24T14:03:33+08:00 INF continue sumall.
