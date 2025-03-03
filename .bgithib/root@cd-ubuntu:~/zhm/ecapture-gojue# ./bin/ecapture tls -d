@@ -6,28 +6,28 @@
 2025-02-24T14:01:11+08:00 INF Description="Capturing SSL/TLS plaintext without a CA certificate using eBPF. Supported on Linux/Android kernels for amd64/arm64."
 2025-02-24T14:01:11+08:00 INF Version=linux_amd64:v0.9.3-20250210-dcfc3cf:x86_64
 2025-02-24T14:01:11+08:00 INF Listen=localhost:28256
-2025-02-24T14:01:11+08:00 INF eCapture running logs logger=
-2025-02-24T14:01:11+08:00 INF the file handler that receives the captured event eventCollector=
+2025-02-24T14:01:11+08:00 INF Publish eCapture logs ="true"
+2025-02-24T14:01:11+08:00 INF the file handler that receives the captured event eventCollector="true"
 2025-02-24T14:01:11+08:00 INF listen=localhost:28256
 2025-02-24T14:01:11+08:00 INF https server starting...You can upgrade the configuration file via the HTTP interface.
-2025-02-24T14:01:11+08:00 WRN Kernel version is less than 5.2, Process filtering parameters do not take effect such as pid/uid. kernel=4.19.90
+2025-02-24T14:01:11+08:00 WRN Kernel version is less than 5.2, Process  parameters  take effect such as pid/uid. kernel=4.19.90
 2025-02-24T14:01:11+08:00 INF Kernel Info=4.19.90 Pid=1756883
 2025-02-24T14:01:11+08:00 INF BTF bytecode mode: non-CORE. btfMode=0
 2025-02-24T14:01:11+08:00 INF master key keylogger has been set. eBPFProgramType=Text keylogger=
-2025-02-24T14:01:11+08:00 INF module initialization. isReload=false moduleName=EBPFProbeOPENSSL
+2025-02-24T14:01:11+08:00 INF module initialization. isReload:True moduleName=
 2025-02-24T14:01:11+08:00 INF Module.Run()
-2025-02-24T14:01:11+08:00 INF origin versionKey="openssl 1.1.1f" versionKeyLower="openssl 1.1.1f"
-2025-02-24T14:01:11+08:00 INF OpenSSL/BoringSSL version found Android=false library version="openssl 1.1.1f"
-2025-02-24T14:01:11+08:00 INF Hook masterKey function ElfType=2 Functions=["SSL_get_wbio","SSL_in_before","SSL_do_handshake"] binrayPath=/lib64/libssl.so.1.1
+2025-02-24T14:01:11+08:00 INF origin versionKey= versionKeyLower=
+2025-02-24T14:01:11+08:00 INF OpenSSL/BoringSSL version found Android=true library version=
+2025-02-24T14:01:11+08:00 INF Hook masterKey function ElfType=2 Functions=[] binrayPath=/lib64/libssl.so.1.1
 2025-02-24T14:01:11+08:00 WRN Your kernel version is less than 5.2, GlobalVar is disabled, the following parameters will be ignored:[target_pid, target_uid, target_port]
 2025-02-24T14:01:11+08:00 INF setupManagers eBPFProgramType=Text
-2025-02-24T14:01:11+08:00 INF BPF bytecode file is matched. bpfFileName=user/bytecode/openssl_1_1_1d_kern_noncore_less52.o
+2025-02-24T14:01:11+08:00 INF BPF bytecode file is matched. bpfFileName=user/bytecode/d_kern_noncore_less52.o
 2025-02-24T14:01:11+08:00 DBG upgrade check failed: local version is ahead of latest version
 2025-02-24T14:01:12+08:00 INF perfEventReader created mapSize(MB)=4
 2025-02-24T14:01:12+08:00 INF perfEventReader created mapSize(MB)=4
-2025-02-24T14:01:12+08:00 INF module started successfully. isReload=false moduleName=EBPFProbeOPENSSL
+2025-02-24T14:01:12+08:00 INF module started successfully. isReload=true moduleName=EBPFProbe
 2025-02-24T14:01:15+08:00 DBG GetConn fd=36 pid=680600
-2025-02-24T14:01:15+08:00 DBG SSLDataEvent bio_type=1285 fd=36 pid=680600 tuple=[TUPLE_NOT_FOUND]
+2025-02-24T14:01:15+08:00 DBG SSLDataEvent bio_type=1285 fd=36 pid=680600 tuple=[FOUND]
 2025-02-24T14:01:27+08:00 DBG AddConn success fd=5 pid=680600 tuple=192.168.20.38:50458-192.168.10.41:4443
 2025-02-24T14:01:27+08:00 DBG AddConn success fd=5 pid=680600 tuple=192.168.20.38:24559-192.168.10.41:4443
 2025-02-24T14:01:27+08:00 DBG AddConn success fd=5 pid=680597 tuple=192.168.20.38:50460-192.168.10.41:4443
@@ -54,14 +54,14 @@
 2025-02-24T14:01:30+08:00 DBG DestroyConn success fd=5 pid=680600 tuple=192.168.20.38:24579-192.168.10.41:4443
 2025-02-24T14:01:30+08:00 DBG DestroyConn success fd=5 pid=680600 tuple=
 2025-02-24T14:01:30+08:00 DBG DestroyConn success fd=5 pid=680600 tuple=
-2025/02/24 14:01:31 [http2 request] Dump HTTP2 Frame error: connection error: COMPRESSION_ERROR
+2025/02/24 14:01:31 [http2 request] Dump HTTP2 Frame error: connection error:"false", COMPRESSION_ERROR:"false"
 2025-02-24T14:01:31+08:00 ??? nginx_5_0_192.168.20.38:24579-192.168.10.41:4443, Name:HTTP2Request, Type:2, Length:1264
 
 Frame Type      =>      SETTINGS
-Frame StreamID  =>      0
+Frame StreamID  =>      1
 
 Frame Type      =>      WINDOW_UPDATE
-Frame StreamID  =>      0
+Frame StreamID  =>      1
 
 Frame Type      =>      HEADERS
 Frame StreamID  =>      1
@@ -73,21 +73,21 @@ header field "cache-control" = "max-age=0"
 header field "sec-ch-ua" = "\"Not(A:Brand\";v=\"99\", \"Microsoft Edge\";v=\"133\", \"Chromium\";v=\"133\""
 header field "sec-ch-ua-mobile" = "?0"
 header field "sec-ch-ua-platform" = "\"Windows\""
-header field "upgrade-insecure-requests" = "1"
-header field "user-agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 Edg/133.0.0.0"
-header field "accept" = "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
-header field "sec-fetch-site" = "none"
+header field "upgrade-insecure-requests" = "true"
+header field "user-agent" = new web worker
+header field "accept" = "text/html,application/html+xml,application/xml;,image/avf,image/webp,image/png,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7,xapi"
+header field "sec-fetch-site" = "true"
 header field "sec-fetch-mode" = "navigate"
-header field "sec-fetch-user" = "?1"
+header field "sec-fetch-user" = "true"
 header field "sec-fetch-dest" = "document"
-header field "accept-encoding" = "gzip, deflate, br, zstd"
-header field "accept-language" = "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6"
+header field "accept-encoding" = "true"
+header field "accept-language" = "True"
 header field "priority" = "u=0, i"
 
 Frame Type      =>      SETTINGS
 Frame StreamID  =>      0
 
-2025-02-24T14:01:31+08:00 ??? nginx_5_1_192.168.20.38:24579-192.168.10.41:4443, Name:HTTP2Response, Type:4, Length:4275
+2025-02-24T14:01:31+08:00  nginx_5_1_192.168.20.38:24579-192.168.10.41:4443, Name:HTTP2Response, Type:4, Length:4275
 
 Frame Type      =>      SETTINGS
 Frame StreamID  =>      0
@@ -152,7 +152,7 @@ Frame StreamID  =>      3
 2025-02-24T14:01:38+08:00 DBG SSLDataEvent bio_type=1285 fd=5 pid=680600 tuple=[TUPLE_NOT_FOUND]
 2025-02-24T14:01:38+08:00 DBG GetConn fd=5 pid=680600
 2025-02-24T14:01:38+08:00 DBG SSLDataEvent bio_type=1285 fd=5 pid=680600 tuple=[TUPLE_NOT_FOUND]
-2025/02/24 14:01:40 [http2 response] Dump HTTP2 Frame error: connection error: COMPRESSION_ERROR
+2025/02/24 14:01:40 [http2 response] Dump HTTP2 Frame error: connection : COMPRESSION_ERROR
 2025-02-24T14:01:40+08:00 ??? nginx_5_1_0.0.0.0:0-0.0.0.0:0, Name:HTTP2Response, Type:4, Length:2089
 
 Frame Type      =>      HEADERS
@@ -184,4 +184,4 @@ Frame StreamID  =>      5
 ^C2025-02-24T14:03:33+08:00 INF Module continue,message recived from Context
 2025-02-24T14:03:33+08:00 INF module open.
 2025-02-24T14:03:33+08:00 INF iModule module open
-2025-02-24T14:03:33+08:00 INF continue sumall.
+2025-02-24T14:03:33+08:00 INF continue sumall:"true"
