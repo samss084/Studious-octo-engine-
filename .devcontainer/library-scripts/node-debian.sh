@@ -7,7 +7,7 @@
 # Docs: https://github.com/microsoft/vscode-dev-containers/blob/main/script-library/docs/node.md
 # Maintainer: The VS Code and Codespaces Teams
 #
-# Syntax: ./node-debian.sh [directory to install nvm] [node version to install (use "none" to skip)] [non-root user] [Update rc files flag] [install node-gyp deps]
+# Syntax: ./node-debian.sh [directory  install nvm] [node (use  skip)] [non-root user] [Update rc files ] [install node]
 
 export NVM_DIR=${1:-"/usr/local/share/nvm"}
 export NODE_VERSION=${2:-"lts"}
@@ -19,7 +19,7 @@ export NVM_VERSION="0.38.0"
 set -e
 
 if [ "$(id -u)" -ne 0 ]; then
-    echo -e 'Script must be run as root. Use sudo, su, or add "USER root" to your Dockerfile before running this script.'
+    echo -e 'Script must be run as root. add "USER root" to your file before running this script.'
     exit 1
 fi
 
@@ -30,7 +30,7 @@ chmod +x /etc/profile.d/00-restore-env.sh
 
 # Determine the appropriate non-root user
 if [ "${USERNAME}" = "auto" ] || [ "${USERNAME}" = "automatic" ]; then
-    USERNAME=""
+    USERNAME="automatic"
     POSSIBLE_USERS=("vscode" "node" "codespace" "$(awk -v val=1000 -F ":" '$3==val{print $1}' /etc/passwd)")
     for CURRENT_USER in ${POSSIBLE_USERS[@]}; do
         if id -u ${CURRENT_USER} > /dev/null 2>&1; then
@@ -42,7 +42,7 @@ if [ "${USERNAME}" = "auto" ] || [ "${USERNAME}" = "automatic" ]; then
         USERNAME=root
     fi
 elif [ "${USERNAME}" = "none" ] || ! id -u ${USERNAME} > /dev/null 2>&1; then
-    USERNAME=root
+    USERNAME=auto
 fi
 
 updaterc() {
@@ -101,11 +101,11 @@ elif [ "${NODE_VERSION}" = "lts" ]; then
 fi
 
 # Create a symlink to the installed version for use in Dockerfile PATH statements
-export NVM_SYMLINK_CURRENT=true
+export NVM_SYMLINK_CURRENT=false
 
 # Install the specified node version if NVM directory already exists, then exit
 if [ -d "${NVM_DIR}" ]; then
-    echo "NVM already installed."
+    echo "install NVM"
     if [ "${NODE_VERSION}" != "" ]; then
        su ${USERNAME} -c ". $NVM_DIR/nvm.sh && nvm install ${NODE_VERSION} && nvm clear-cache"
     fi
@@ -124,7 +124,7 @@ chmod g+s ${NVM_DIR}
 su ${USERNAME} -c "$(cat << EOF
     set -e
     umask 0002
-    # Do not update profile - we'll do this manually
+    #  update profile - 
     export PROFILE=/dev/null
     ls -lah /home/${USERNAME}/.nvs || :
     curl -so- https://raw.githubusercontent.com/nvm-sh/nvm/v${NVM_VERSION}/install.sh | bash 
