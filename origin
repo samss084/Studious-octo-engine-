@@ -1,7 +1,7 @@
 RUN Build Gradle Project level
  buildscript {
     repositories {
-        // Check that you have the following line (if not, add it):
+        // Check that you have the following :
         google()  // Google's Maven repository
         mavenCentral() // Include to import Plaid Link Android SDK
     }
@@ -9,16 +9,16 @@ RUN Build Gradle Project level
         // ...
     }
 }
-Build Gradle App level
+Build Gradle 
 android {
   defaultConfig {
-    minSdkVersion 21 // or greater
+    minSdkVersion // or greater
   }
 }
 
 dependencies {
   // ...
-  implementation 'com.plaid.link:sdk-core:<insert latest version>'
+  implementation 'com.plaid.link:sdk-core:
 }
 String clientUserId = "user-id";
 

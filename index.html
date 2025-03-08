@@ -1,5 +1,5 @@
-run:
-import common from "../common/webhook-base.mjs";
+run:Once daily
+import Passed intents
 
 export default {
   ...common,
@@ -8,14 +8,14 @@ export default {
   type: "source",
   version: "0.1.1",
   description: "Emit new event for each new payment",
-  methods: {
-    ...common.methods,
+  source: {
+    ...,
     getEvents() {
       return [
         "payment_intent.created",
       ];
     },
-    async onEvent(event) {
+    sync onEvent(event) {
       const { amount } = event.data.object;
       this.$emit(event, {
         summary: `New payment of ${amount} received`,
@@ -25,7 +25,8 @@ export default {
     },
   },
 };
-Mozilla Payment Request
-Like Gecko Webkit Payment Request
-GooglePay/Googlewallet
+//Update all request
+//Mozilla Payment Request
+// Like Gecko Webkit Payment Request
+//GooglePay/Googlewallet
 Google Billing

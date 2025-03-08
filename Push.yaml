@@ -1,6 +1,6 @@
 const stripe = require('stripe')('your_stripe_secret_key');
 
-async function pushTreasuryPayment(amount, currency, destination) {
+sync function pushTreasuryPayment(amount, currency, destination) {
   try {
     const paymentIntent = await stripe.paymentIntents.create({
       amount,

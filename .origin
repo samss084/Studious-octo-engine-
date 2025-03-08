@@ -1,7 +1,7 @@
- $ git remote add origin https://github.com/OWNER/REPOSITORY.git
+ $1 git remote add origin https://github.com/OWNER/REPOSITORY.git
 # Set a new remote
 
-$ git remote -v
+$2 Git remote -v
 # Verify new remote
 > origin  https://github.com/OWNER/REPOSITORY.git (fetch)
 > origin  https://github.com/OWNER/REPOSITORY.git (push)
