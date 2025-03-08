@@ -1,7 +1,7 @@
 {
   "name": "vanilla-basic",
   "version": "1.0.0",
-  "scripts": { 
+  "scripts": "UpdatePending",
     "URL":"https://secure.serve.com/accounts/4390aec48d94434c9c9d3ffc8445d8ee
     "start": "sirv ./src public --cors -- -csrf --port 8000"
   }
