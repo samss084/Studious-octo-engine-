@@ -18,42 +18,42 @@ android {
 
 dependencies {
   // ...
-  implementation 'com.plaid.link:sdk-core:
+  implemention = plaid app
 }
 String clientUserId = "user-id";
 
-LinkTokenCreateRequestUser user = new LinkTokenCreateRequestUser()
+LinkTokenCreateRequestUser user =  LinkTokenCreateRequestUser()
   .clientUserId(clientUserId)
   .legalName("legal name")
   .phoneNumber("4155558888")
   .emailAddress("email@address.com");
 
-LinkTokenCreateRequest request = new LinkTokenCreateRequest()
+LinkTokenCreateRequest request = LinkTokenCreateRequest()
   .user(user)
-  .clientName("Plaid Test App")
+  .clientName("Plaid App")
   .products(Arrays.asList(Products.AUTH))
   .countryCodes(Arrays.asList(CountryCode.US))
   .language("en")
-  .webhook("https://example.com/webhook")
+  .webhook("https://www.plaid.com/webhook")
   .linkCustomizationName("default")
-  .androidPackageName("com.plaid.example")
+  .androidPackageName("com.onedebit.chime"),("secure.serve.mobile")
 
 Response<LinkTokenCreateResponse> response = client()
-  .linkTokenCreate(request)
+  .linkTokenCreate()
   .execute();
 
-String linkToken = response.body().getLinkToken();
+linkToken = response().getLinkToken();
 
-LinkTokenConfiguration linkTokenConfiguration = new LinkTokenConfiguration.Builder()
+LinkTokenConfiguration linkToken = LinkToken.Builder()
     .token("LINK_TOKEN_FROM_SERVER")
     .build();
 
-    private ActivityResultLauncher<PlaidHandler> linkAccountToPlaid = registerForActivityResult(new FastOpenPlaidLink(),
+    private ActivityResultLauncher<Plaid> linkAccountToPlaid = Result(OpenPlaidlink(),
   result -> {
     if (result instanceof LinkSuccess) {
       /* handle LinkSuccess */
     } else {
-      /* handle LinkExit */
+      /* handle LinkContinue */
     }
   }
 );

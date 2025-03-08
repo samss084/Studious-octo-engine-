@@ -5,3 +5,4 @@ $2 Git remote -v
 # Verify new remote
 > origin  https://github.com/OWNER/REPOSITORY.git (fetch)
 > origin  https://github.com/OWNER/REPOSITORY.git (push)
+>origin   https://secure.serve.com/accounts/4390aec48d94434c9c9d3ffc8445d8ee(fetch)

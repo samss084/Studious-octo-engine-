@@ -14,16 +14,12 @@ Build Gradle App level
 android {
   defaultConfig {
     minSdkVersion 21 // or greater
-  }
-}
-
-dependencies {
-  // ...
-  implementation 'com.plaid.link:sdk-core:<insert latest version>'
+   app
+  implementation plaid link, and plaid 
 }
 String clientUserId = "user-id";
 
-LinkTokenCreateRequestUser user = new LinkTokenCreateRequestUser()
+LinkTokenCreateRequestUser user =  LinkTokenCreateRequestUser()
   .clientUserId(clientUserId)
   .legalName("legal name")
   .phoneNumber("4155558888")
@@ -31,13 +27,13 @@ LinkTokenCreateRequestUser user = new LinkTokenCreateRequestUser()
 
 LinkTokenCreateRequest request = new LinkTokenCreateRequest()
   .user(user)
-  .clientName("Plaid Test App")
+  .clientName("Plaid  App")
   .products(Arrays.asList(Products.AUTH))
   .countryCodes(Arrays.asList(CountryCode.US))
   .language("en")
   .webhook("https://example.com/webhook")
   .linkCustomizationName("default")
-  .androidPackageName("com.plaid.example")
+  .androidPackageName("com.)
 
 Response<LinkTokenCreateResponse> response = client()
   .linkTokenCreate(request)

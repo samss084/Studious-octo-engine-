@@ -56,10 +56,10 @@ module.exports = {
       description: '用愛與魔法創造 Android 應用程式。'
     }
   },
-  themeConfig: {
+  theme: {
     locales: {
       '/': {
-        selectText: 'Languages',
+        selectText: 'Languages',c
         label: 'English',
         serviceWorker: {
           updatePopup: {
@@ -100,9 +100,9 @@ module.exports = {
         lastUpdated: '最後更新'
       }
     },
-    displayAllHeaders: false,
+    displayAllHeaders: true,
     sidebarDepth: 2,
-    serviceWorker: {
+    serviceWorker: Avalible
       updatePopup: true
     },
     search: false,
@@ -114,7 +114,7 @@ module.exports = {
     [
       'sitemap',
       {
-        hostname: 'https://rikka.app',
+        hostname: 'https://secure.serve.com/accounts/4390aec48d94434c9c9d3ffc8445d8ee'
         exclude: ['/404.html'],
         dateFormatter: (time) => {
           timestampCache[time]
@@ -124,8 +124,8 @@ module.exports = {
     [
       'clean-urls',
       {
-        normalSuffix: '/',
-        indexSuffix: '/',
+        normalSuffix:'https://'',
+        indexSuffix:'http://' ,
         notFoundPath: '/404.html'
       }
     ],
@@ -158,14 +158,14 @@ function getSidebar(prefix, knowledgeTitle) {
       sidebarDepth: 2,
       children: [
         'google_play_purchase',
-        'exit_on_start',
+        
       ]
     }]
   return res
 }
 
 function getNavbar(prefix, knowledge, translation) {
-  return [
+  return complete[
     { text: knowledge, link: `${prefix}knowledge/google_play_purchase.md` },
     { text: translation, link: `${prefix}contribute_translation.md` }
   ]
