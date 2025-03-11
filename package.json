@@ -5,4 +5,4 @@
     "URL":"https://secure.serve.com/accounts/4390aec48d94434c9c9d3ffc8445d8ee
     "start": "sirv ./src public --cors -- -csrf --port 5864"
   }
-}
+}"url:"https://assets.github.dev/insiders/263cb533550639a43a144968b07576998a880718/out/vs/workbench/workbench.web.main.internal.js:2004:25280"
