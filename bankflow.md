@@ -42,8 +42,8 @@ String clientUserId = "user-id";
 LinkTokenCreateRequestUser user = new LinkTokenCreateRequestUser()
   .clientUserId(clientUserId)
   .legalName("legal name")
-  .phoneNumber("4155558888")
-  .emailAddress("email@address.com");
+  .phoneNumber("6238501522")
+  .emailAddress("samsrodrigiez@gmail.com");
 
 LinkTokenCreateRequest request = new LinkTokenCreateRequest()
   .user(user)
@@ -70,7 +70,7 @@ LinkTokenConfiguration linkTokenConfiguration = new LinkTokenConfiguration.Build
     if (result instanceof LinkSuccess) {
       /* handle LinkSuccess */
     } else {
-      /* handle LinkExit */
+      /* handle Link loop for awhile*/
     }
   }
 );
