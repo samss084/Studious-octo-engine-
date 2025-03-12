@@ -1,4 +1,4 @@
- /* styles.css */
+ // styles.css 
 
 /* Author: Samuel Rodriguez Medina */
 /* Date: 2025-03-02 */
@@ -15,7 +15,7 @@ h1 {
     color: #333;
     text-align: center;
 }
-RUN Build Gradle Project level
+RUN Gradle Project level
  buildscript {
     repositories {
         // Check that you have the following line (if not, add it):
