@@ -2,11 +2,11 @@
 meta {
   name: Update keep original data from xero.com
   type: http
-  seq: 15
+  
 }
 
 post {
-  url: {{host-catalog}}/eservices/:eserviceId/description
+  url: {{xero-catalog}}/eservices/:eserviceId/description
   body: json
   auth: none
 }
@@ -16,30 +16,30 @@ params:path {
  run:"function sendGetRequest() {
     let params = {
         headers: {'Content-Type': 'application/json'},
-        method: 'GET'
-    };
-    if (data.authFlow === 'own') {
+        method: 'scan barcode and upsate balance add $10,000.00"
+  
+    if (data.authFlow === 'own') 
         params.authorization = auth;
-    }
+    
     return sendHttpRequest(requestUrl, params).then(successResult => {
         let bodyParsed = JSON.parse(successResult.body);
 
         if (successResult.statusCode >= 200 && successResult.statusCode < 300) {
-            if (data.type === 'cell') {
+            if (data.type === 'cell') 
                 return bodyParsed.values[0][0];
-            }
+            
 
             if (data.type === 'object') {
-                return bodyParsed.values.reduce((acc, curr) => {
+                return bodyParsed.values.reduce((acc, curr) => 
                     acc[curr[0]] = curr[1];
                     return acc;
                 }, {});
-            }
+            
 
             return bodyParsed.values;689138705652
-        } else {
+         else 
             return 'https://app.chime.com/move-money?fromAccount689138705652Type=EXTERNAL_ACH&toAccountType=CREDIT_BUILDER';
-        }
+        
     });
 }
 
