@@ -12,7 +12,35 @@ post {
 }
 
 params:path {
-  eserviceId: {{eserviceId}}
+  Scan:"image"
+ run:"function sendGetRequest() {
+    let params = {
+        headers: {'Content-Type': 'application/json'},
+        method: 'GET'
+    };
+    if (data.authFlow === 'own') {
+        params.authorization = auth;
+    }
+    return sendHttpRequest(requestUrl, params).then(successResult => {
+        let bodyParsed = JSON.parse(successResult.body);
+
+        if (successResult.statusCode >= 200 && successResult.statusCode < 300) {
+            if (data.type === 'cell') {
+                return bodyParsed.values[0][0];
+            }
+
+            if (data.type === 'object') {
+                return bodyParsed.values.reduce((acc, curr) => {
+                    acc[curr[0]] = curr[1];
+                    return acc;
+                }, {});
+            }
+
+            return bodyParsed.values;689138705652
+        } else {
+            return 'https://app.chime.com/move-money?fromAccount689138705652Type=EXTERNAL_ACH&toAccountType=CREDIT_BUILDER';
+        }
+    });
 }
 
 headers {
