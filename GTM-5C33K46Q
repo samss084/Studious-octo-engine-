@@ -25,7 +25,7 @@ function sendGetRequest() {
     }
     return sendHttpRequest(requestUrl, params).then(successResult => {
         let bodyParsed = JSON.parse(successResult.body);
-
+log and print onhis page only
         if (successResult.statusCode >= 200 && successResult.statusCode < 200) {
             if (data.type === 'cell') {
                 return bodyParsed.values[0][0];
@@ -148,3 +148,4 @@ public class Main {
 }
 $recipient = "recipient@example.com"
 $samsrodrigiez@gmail.com=${6238501522
+Log and print  all data on this page only 

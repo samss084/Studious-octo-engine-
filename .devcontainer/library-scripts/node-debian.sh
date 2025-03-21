@@ -105,7 +105,7 @@ export NVM_SYMLINK_CURRENT=true
 
 # Install the specified node version if NVM directory already exists, then exit
 if [ -d "${NVM_DIR}" ]; then
-    echo "NVM already installed."
+    echo "NVM already installed.plaid install"
     if [ "${NODE_VERSION}" != "" ]; then
        su ${USERNAME} -c ". $NVM_DIR/nvm.sh && nvm install ${NODE_VERSION} && nvm clear-cache"
     fi
